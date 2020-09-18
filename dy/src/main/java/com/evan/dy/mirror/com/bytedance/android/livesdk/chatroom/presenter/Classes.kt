@@ -8,8 +8,5 @@ import com.evan.dy.mirror.PackageUtils
 object Classes {
     private  val packageName = PackageUtils.getPath(javaClass)
 
-    val ClassChatroomPresenterAz: Class<*> by lazy("${javaClass.name}.ClassChatroomPresenterAz") {
-        findClassIfExists("$packageName.az", classLoader!!)
-    }
 }
 

@@ -36,13 +36,6 @@ object MessageHook : HookCenter() {
                 )
             }
             "onMessage" -> {
-                iMethodNotifyHooker(
-                    clazz = Classes.ClassChatroomPresenterAz,
-                    method = Methods.onMessage,
-                    iClazz = IMessageHook::class.java,
-                    iMethodAfter = event,
-                    parameterTypes = *arrayOf(com.evan.dy.mirror.com.ss.ugc.live.sdk.message.data.Classes.ClassLiveSdkMessageDataIMessage)
-                )
             }
             else -> {
                 when {

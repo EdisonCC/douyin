@@ -2,8 +2,10 @@ package com.ehook.dy
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.ehook.EasyHook
+import com.evan.dy.floatingview.FloatingView
 import com.ehook.utils.CmdUtil
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -15,12 +17,12 @@ class MainActivity : AppCompatActivity() {
         CmdUtil.isRoot
         sample_test.setOnClickListener {
         }
-
     }
 
     override fun onDestroy() {
         super.onDestroy()
     }
+
     override fun onResume() {
         super.onResume()
         if (checkHook()) {
@@ -30,6 +32,11 @@ class MainActivity : AppCompatActivity() {
             )
             sample_text.text = "hooked = true  \n  \n $path"
         }
+    }
+
+    override fun onPause() {
+        super.onPause()
+//        FloatingView.get().detach(this)
     }
 
     fun checkHook(): Boolean {
