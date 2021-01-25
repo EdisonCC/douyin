@@ -10,8 +10,8 @@ android {
         applicationId "com.ehook.dy"
         minSdkVersion 21
         targetSdkVersion 29
-        versionCode 1
-        versionName "1.0"
+        versionCode rootProject.ext.versionCode
+        versionName rootProject.ext.versionName
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -30,17 +30,40 @@ android {
         checkReleaseBuilds false
         abortOnError false
     }
-
+    signingConfigs {
+        release {
+            storeFile file("release.jks")
+            storePassword "qweasdzxc"
+            keyAlias "key0"
+            keyPassword "qweasdzxc"
+        }
+        debug {
+            storeFile file("debug.keystore")
+            storePassword "android"
+            keyAlias "androiddebugkey"
+            keyPassword "android"
+        }
+    }
     buildTypes {
         release {
-            minifyEnabled false
+            signingConfig signingConfigs.release
             debuggable false
+            jniDebuggable false
+            zipAlignEnabled true
+            minifyEnabled true
+            testCoverageEnabled false
+            shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
         debug {
             minifyEnabled false
             debuggable true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    android.applicationVariants.all { variant ->
+        variant.outputs.all {
+            outputFileName = "app_${variant.buildType.name}_${defaultConfig.versionName}.apk"
         }
     }
 //    sourceSets {
@@ -88,9 +111,15 @@ dependencies {
     implementation project(":dy")
     implementation project(":socket")
     implementation 'com.google.code.gson:gson:2.8.6'
+    implementation 'org.bouncycastle:bcprov-jdk16:1.46'
+    implementation 'commons-codec:commons-codec:1.10'
     compileOnly 'de.robv.android.xposed:api:82'
     compileOnly 'de.robv.android.xposed:api:82:sources'
     implementation "com.google.protobuf.nano:protobuf-javanano:3.2.0rc2"
+    implementation "androidx.recyclerview:recyclerview:1.0.0"
+    implementation 'com.gyf.barlibrary:barlibrary:2.3.0'
+    implementation 'com.tencent.bugly:crashreport_upgrade:1.4.1'
+    implementation 'com.tencent.bugly:nativecrashreport:3.7.1'
 
 }
 

@@ -1,5 +1,6 @@
 package com.ehook.core
 
+import android.widget.PopupWindow
 import java.lang.Runnable
 
 object Clazz {
@@ -18,6 +19,8 @@ object Clazz {
     val String = String::class.java
     val CharSequence = CharSequence::class.java
     val Activity = android.app.Activity::class.java
+    val Dialog = android.app.Dialog::class.java
+    val PopupWindow = PopupWindow::class.java
     val Bundle = android.os.Bundle::class.java
     val Configuration = android.content.res.Configuration::class.java
     val ContentValues = android.content.ContentValues::class.java

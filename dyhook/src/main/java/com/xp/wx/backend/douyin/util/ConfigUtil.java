@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.text.TextUtils;
+
 import com.xp.wx.Global;
 import com.xp.wx.backend.douyin.api.DyHookApi;
 import com.xp.wx.backend.douyin.handler.AutoSendMsgHandler;
@@ -21,10 +22,12 @@ import com.xp.wx.util.JsonUtil;
 import com.xp.wx.util.Log;
 import com.xp.wx.util.OkHttpClientUtil;
 import com.xp.wx.util.StringUtils;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
 import kotlin.Metadata;
 import kotlin.TypeCastException;
 import kotlin.jvm.internal.Intrinsics;

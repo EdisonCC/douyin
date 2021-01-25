@@ -62,7 +62,7 @@ public class User extends BasePB<User> {
     public long id;
 //    public int incomeSharePercent;
 //    public boolean isVerified;
-//    public int level;
+    public int level;
 //    public int linkMicStats;
 //    public int modifyTime;
     public String nickName;

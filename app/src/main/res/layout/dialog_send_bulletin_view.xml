@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_text_fff"
+    android:orientation="vertical"
+    android:padding="15dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:text="公告内容"
+        android:textColor="@color/color_text_686a6f"
+        android:textSize="16dp" />
+
+    <EditText
+        android:id="@+id/edit_text"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:background="@drawable/edit_bg"
+        android:gravity="start"
+        android:hint="欢迎来的直播间,谢谢您的关注"
+        android:padding="10dp"
+        android:textColor="@color/color_text_686a6f"
+        android:textSize="14dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="15dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="公告间隔(秒)"
+            android:textColor="@color/color_text_686a6f"
+            android:textSize="16dp" />
+
+        <EditText
+            android:id="@+id/edit_text_time"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:background="@drawable/edit_bg"
+            android:gravity="center"
+            android:hint="30"
+            android:inputType="number"
+            android:textColor="@color/color_text_686a6f"
+            android:textSize="14dp" />
+    </LinearLayout>
+</LinearLayout>

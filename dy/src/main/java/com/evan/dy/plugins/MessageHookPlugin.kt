@@ -4,7 +4,10 @@ import com.ehook.utils.LogUtil
 import com.evan.dy.api.ChatRoomApi
 import com.evan.dy.api.model.LiveRoom
 import com.evan.dy.api.model.LiveRoomMessage
+import com.evan.dy.floatingview.FloatingView
 import com.evan.dy.interfaces.IMessageHook
+import com.evan.dy.task.DyTask
+import com.evan.socket.JsonUtil
 import kotlin.jvm.internal.Intrinsics
 
 
@@ -26,11 +29,15 @@ object MessageHookPlugin : IMessageHook {
             LogUtil.e(MessageHookPlugin::class.java.simpleName, "onRoomChanged")
         }
         ChatRoomApi.setRoom(LiveRoom(room))
+        FloatingView.get().text("开始")
+        DyTask.getInstance().stopTask()
     }
 
     override fun onMessage(message: Any?) {
         if (message != null) {
+            DyTask.getInstance().handleMessage(LiveRoomMessage(message).message)
             LogUtil.e(MessageHookPlugin::class.java.simpleName, "onMessage=${LiveRoomMessage(message).message}")
+//            LogUtil.e(MessageHookPlugin::class.java.simpleName, "qqqq=${JsonUtil.toJson(message)}")
         }else{
             LogUtil.e(MessageHookPlugin::class.java.simpleName, "message null")
         }

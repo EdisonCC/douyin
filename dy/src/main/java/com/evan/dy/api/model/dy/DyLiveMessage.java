@@ -88,7 +88,23 @@ public interface DyLiveMessage {
                 '}';
         }
     }
+    public class SocialMessage extends DyMessage<SocialMessage> {
 
+        public int action;
+
+        @Override
+        public SocialMessage parseFrom(Object obj) {
+            return JsonUtils.parseBySerializedName(obj, SocialMessage.class);
+        }
+
+        @Override
+        public String toString() {
+            return "MemberMessage{" +
+                "nickName=" + getLiveUser().getUser().nickName +
+                ", action=" + action +
+                '}';
+        }
+    }
     //com.bytedance.android.livesdk.gift.model.d
     public class GiftMessage extends DyMessage<GiftMessage> {
 

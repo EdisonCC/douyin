@@ -176,8 +176,8 @@ object ChatRoomApi {
                 if (code == 0 && obj is PromotionResponse) {
                     val p =obj as PromotionResponse;
                     var arrayList = p.promotions
-                    val promotion = arrayList[random.nextInt(  arrayList.size )]
-                    LogUtil.e(ChatRoomApi::class.java, "promotion =${promotion.promotion_id}")
+                    val promotion = arrayList[random.nextInt(arrayList.size)]
+                    LogUtil.e(ChatRoomApi::class.java, "promotion =${promotion?.promotion_id}")
                     sendLiveEvent(room?.id, room?.ownerUserId, room?.owner?.secUid, promotion.promotion_id, callback)
                 } else {
                     callback?.onResult(code, message, obj)

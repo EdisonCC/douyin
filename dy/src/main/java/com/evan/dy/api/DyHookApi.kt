@@ -36,7 +36,7 @@ object DyHookApi {
     fun getCurrUser(): DyProfileUser? {
         var userModel = ClassIAccountUserService_getCurUser.invoke(ClassAccountE_e.invoke(null))
             ?: return null
-        return ProfileUser(userModel).user
+        return ProfileUser(userModel)?.user
     }
 
     fun sendChatText(userID: Long?, content: String, callback: EICommonCallback?) {
@@ -101,17 +101,17 @@ object DyHookApi {
     }
     /**
      * 群发消息
-     * count -1全部
+     * count -1 全部
      * gender -1 全部 1 男 2女
      * followStatus -1全部 0 粉丝 2相互关注
      */
-    fun sendMass(count: Int, gender: Int, followStatus: Int,content: String,callback: EICommonCallback?) {
-        getFollowerAndSendText(count, gender, followStatus, 0, 0, content)
+    fun sendMass(count: Int, gender: Int, followStatus: Int, maxTime:Long ,content: String,callback: EICommonCallback?) {
+        getFollowerAndSendText(count, gender, followStatus, maxTime, 0, content)
         callback?.onResult(0, "success", content)
     }
 
     fun getFollowerAndSendText(count: Int, gender: Int, followStatus: Int, maxTime: Long, offset: Int,content: String) {
-        getFollowerList(maxTime, 1, offset, object : EICommonCallback {
+        getFollowerList(maxTime, 20, offset, object : EICommonCallback {
             override fun onResult(code: Int?, message: String?, obj: Any?) {
                 if (code == 0 && obj != null) {
                     val followerUser = FollowerUser(obj)

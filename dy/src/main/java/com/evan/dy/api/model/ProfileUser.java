@@ -13,7 +13,11 @@ public final class ProfileUser {
 
     public DyProfileUser getUser() {
         if (this.user == null) {
-            this.user = new DyProfileUser().parseFrom(userObj);
+            try {
+                this.user = new DyProfileUser().parseFrom(userObj);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
         return user;
     }

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_text_fff"
+    android:padding="15dp">
+
+    <EditText
+        android:id="@+id/edit_text"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:background="@drawable/edit_bg"
+        android:gravity="start"
+        android:hint="欢迎来的直播间"
+        android:padding="10dp"
+        android:textColor="@color/color_text_686a6f"
+        android:textSize="14dp" />
+</LinearLayout>

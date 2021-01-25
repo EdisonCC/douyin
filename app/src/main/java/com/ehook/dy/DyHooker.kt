@@ -32,7 +32,7 @@ class DyHooker : IXposedHookLoadPackage, IXposedHookZygoteInit {
                     LogUtil.e("DyHooker", "processName= dy ... ${lpparam.processName} packageName =${lpparam.packageName}")
                     if (TextUtils.equals(Global.DY_PACKAGE_NAME, getCurrentProcessName(it))) {
                         LogUtil.e("DyHooker", "processName= dyp ... ${lpparam.processName} packageName =${lpparam.packageName}")
-                        if (Global.isDebug) {
+                        if (BuildConfig.DEBUG) {
                             HookGlobal.unitTestMode = true
                             hookDyOnFly(lpparam, it)
                         } else {
@@ -107,7 +107,7 @@ class DyHooker : IXposedHookLoadPackage, IXposedHookZygoteInit {
                     plugins = WwEngine.plugins,
                     centers = WwEngine.hookCenters + SharedEngine.hookCenters
                 )
-                WeWorkService.onCreate()
+                WeWorkService.onCreate(context)
             }
         }
     }

@@ -291,7 +291,7 @@ object CmdUser {
                             Cmd222Bean::class.java
                         )
 //                    count: Int, gender: Int, followStatus: Int,content
-                    DyHookApi.sendMass(cmdBean.count,cmdBean.gender,cmdBean.followStatus,cmdBean.content,object :EICommonCallback{
+                    DyHookApi.sendMass(cmdBean.count,cmdBean.gender,cmdBean.followStatus,0,cmdBean.content,object :EICommonCallback{
                         override fun onResult(code: Int?, message: String?, obj: Any?) {
                             if (code == 0) {
                                 socketResponse?.success(message)

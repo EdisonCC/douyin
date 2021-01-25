@@ -1,6 +1,7 @@
 package com.evan.dy.api.model;
 
 import com.evan.dy.api.model.dy.DyLiveMessage;
+import com.evan.dy.utils.JsonUtils;
 
 import de.robv.android.xposed.XposedHelpers;
 
@@ -35,8 +36,9 @@ public class LiveRoomMessage {
             dyMessage = new DyLiveMessage.TextMessage().parseFrom(getObj());
         } else if (getMessageType() == MessageEnum.GIFT.ordinal()) {
             dyMessage = new DyLiveMessage.GiftMessage().parseFrom(getObj());
-        } else {
-//            new Message.NormalMessage().print(obj);
+        } else if (getMessageType() == MessageEnum.SOCIAL.ordinal()) {
+            dyMessage = new DyLiveMessage.SocialMessage().parseFrom(getObj());
+        }  else {
             dyMessage = new DyLiveMessage.NormalMessage().parseFrom(getObj());
         }
         dyMessage.messageType = messageType;
@@ -48,6 +50,7 @@ public class LiveRoomMessage {
     public String toString() {
         return "LiveRoomMessage{" +
 //            "message=" + message +
+            ", objJson=" + JsonUtils.toJson(obj) +
             ", obj=" + obj +
             ", messageType=" + getMessageType() +
             ", messageId=" + getMessageId() +
